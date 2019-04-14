@@ -20,5 +20,19 @@ CONFIG SET CONFIG_SETTING_NAME CONFIG_SETTING_VALUE 例如 : CONFIG SET require
 要熟悉常用的配置项
 ```
 
+## 客户端连接
+
+连接命令
+
+```
+// 直接连接
+> redis-cli -h 127.0.0.1 -p 6379 -a passwod // 直接登录
+// 或者
+> redis-cli -h 127.0.0.1 -p 6379
+> AUTH password // 登录
+> PING // 验证是否连接上服务器 服务器连接成功会pong
+> SELECT dbindex // 选择数据库 默认16个数据库 0-15 默认进入 0 这些都可以通过 CONFIG 配置
+> QUIT // 关闭当前客户端
+```
 
 
