@@ -15,7 +15,7 @@ CONFIG GET CONFIG_SETTING_NAME 例如 : CONFIG GET requirepass
 // 获取所有配置
 CONFIG GET *
 // 设置一项配置
-CONFIG SET CONFIG_SETTING_NAME CONFIG_SETTING_VALUE 例如 : CONFIG SET requirepass mitoop
+CONFIG SET CONFIG_SETTING_NAME CONFIG_SETTING_VALUE 例如 : CONFIG SET requirepass mitoop
 // 其他
 要熟悉常用的配置项
 ```
