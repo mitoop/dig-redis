@@ -31,7 +31,7 @@ CONFIG SET CONFIG_SETTING_NAME CONFIG_SETTING_VALUE 例如 : CONFIG SET requirep
 // 或者
 > redis-cli -h 127.0.0.1 -p 6379
 > AUTH password // 登录
-> PING // 验证是否连接上服务器 服务器连接成功会pong
+> PING // 验证是否连接上服务器 服务器连接成功会回复 pong
 > SELECT dbindex // 选择数据库 默认16个数据库 0-15 默认进入 0 这些都可以通过 CONFIG 配置
 > QUIT // 关闭当前客户端
 ```
@@ -42,13 +42,13 @@ INFO 命令
 
 ```
 > INFO // 会显示服务器统计信息 很实用的一个命令
-> MONITOR // 实时打印服务器接收的命令 调试用 例如 : 调试Larave队列
+> MONITOR // 实时打印服务器接收的命令 调试用 例如 : 调试 Larave 队列
 > COMMAND // 获取命令详情数组
 > COMMAND COUNT // 获取命令总数
 > TIME // 返回当前服务器时间
 > DBSIZE // 返回当前数据库的 key 的数量
-> FLUSHDB // 删除当前数据库的所有key 谨慎使用
-> FLUSHALL // 删除所有数据库的所有的key 更谨慎使用
+> FLUSHDB // 删除当前数据库的所有 key 谨慎使用
+> FLUSHALL // 删除所有数据库的所有的 key 更谨慎使用
 > CLIENT LIST // 获取连接到服务器的客户端连接列表
 ```
 
