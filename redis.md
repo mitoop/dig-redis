@@ -17,6 +17,9 @@ CONFIG GET CONFIG_SETTING_NAME 例如 : CONFIG GET requirepass
 CONFIG GET *
 // 设置一项配置
 CONFIG SET CONFIG_SETTING_NAME CONFIG_SETTING_VALUE 例如 : CONFIG SET requirepass mitoop
+// 配置文件重新
+CONFIG REWRITE 
+CONFIG REWRITE 命令对启动 Redis 服务器时所指定的 redis.conf 文件进行改写： 因为 CONFIG_SET 命令可以对服务器的当前配置进行修改， 而修改后的配置可能和 redis.conf 文件中所描述的配置不一样， CONFIG REWRITE 的作用就是通过尽可能少的修改， 将服务器当前所使用的配置记录到 redis.conf 文件中。
 // 其他
 要熟悉常用的配置项
 ```
