@@ -63,3 +63,16 @@ INFO 命令
 > CLIENT KILL 127.0.0.1:43501 // 客户端的ip和端口号 根据 CLIENT LIST 获得
 ```
 
+## 自动过期
+
+```
+> EXPIRE key seconds // 给给定 key 设置生存时间, 当 key 过期时, 它会自动删除. 单位为秒
+> EXPIREAT key timestamp // 给给定 key 设置生存时间 时间是 UNIX 时间戳 EXPIRE + AT
+> TTL key // 返回给定 key 的剩余生存时间 TLL = time to live
+> PERSIST key // 移除给定 key 的生存时间  key 变为永不过期
+> PEXPIRE key milliseconds // 给定 key 设置生存时间 单位为毫秒
+> PEXPIREAT key milliseconds-timestamp // 给给定 key 设置生存时间 时间是 UNIX 毫秒时间戳 
+> PTTL key // 毫秒为单位返回剩余生存时间
+```
+
+## 事务
