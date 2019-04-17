@@ -3,6 +3,7 @@
 ## 概述
 Redis 借鉴了 Linux 操作系统对于版本号的命名规则 :
 版本号第二位如果是奇数, 则为非稳定版本(例如2.7、2.9、3.1), 如果是偶数, 则为稳定版本(例如2.6、2.8、3.0、3.2), 当前奇数版本就是下一个稳定版本的开发版本, 例如2.9版本是3.0版本的开发版本, 所以我们在生产环境通常选取偶数版本的 Redis. 当前最新版本为5.0.4为稳定版本. 
+更多细节 :  (Redis 命令参考)[http://redisdoc.com/index.html]
 
 
 ## 配置
@@ -17,9 +18,11 @@ CONFIG GET CONFIG_SETTING_NAME 例如 : CONFIG GET requirepass
 CONFIG GET *
 // 设置一项配置
 CONFIG SET CONFIG_SETTING_NAME CONFIG_SETTING_VALUE 例如 : CONFIG SET requirepass mitoop
-// 配置文件重新
+// 配置持久化
 CONFIG REWRITE 
 CONFIG REWRITE 命令对启动 Redis 服务器时所指定的 redis.conf 文件进行改写： 因为 CONFIG_SET 命令可以对服务器的当前配置进行修改， 而修改后的配置可能和 redis.conf 文件中所描述的配置不一样， CONFIG REWRITE 的作用就是通过尽可能少的修改， 将服务器当前所使用的配置记录到 redis.conf 文件中。
+// 重置 INFO 命令中的某些统计数据 
+CONFIG RESETSTAT // 重置 INFO 命令中的某些统计数据
 // 其他
 要熟悉常用的配置项
 ```
