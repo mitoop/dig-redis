@@ -43,6 +43,7 @@ CONFIG RESETSTAT // 重置 INFO 命令中的某些统计数据
 > QUIT // 关闭当前客户端
 > CLIENT GETNAME // 获取连接名称 默认没有名称 通过 CLIENT SETNAME 设置
 > CLIENT SETNAME name // 设置连接名称 可通过 CLIENT GETNAME 或者 CLIENT LIST 看到
+> CLIENT SETNAME "" // 重置为空 必须用""
 ```
 
 ## 服务器命令
