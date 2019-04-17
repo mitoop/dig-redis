@@ -57,5 +57,6 @@ INFO 命令
 > FLUSHDB // 删除当前数据库的所有 key 谨慎使用
 > FLUSHALL // 删除所有数据库的所有的 key 更谨慎使用
 > CLIENT LIST // 获取连接到服务器的客户端连接列表
+> CLIENT KILL 127.0.0.1:43501 // 客户端的ip和端口号 根据 CLIENT LIST 获得
 ```
 
