@@ -41,6 +41,8 @@ CONFIG RESETSTAT // 重置 INFO 命令中的某些统计数据
 > PING // 验证是否连接上服务器 服务器连接成功会回复 pong
 > SELECT dbindex // 选择数据库 默认16个数据库 0-15 默认进入 0 这些都可以通过 CONFIG 配置
 > QUIT // 关闭当前客户端
+> CLIENT GETNAME // 获取连接名称 默认没有名称 通过 CLIENT SETNAME 设置
+> CLIENT SETNAME name // 设置连接名称 可通过 CLIENT GETNAME 或者 CLIENT LIST 看到
 ```
 
 ## 服务器命令
