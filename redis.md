@@ -6,7 +6,7 @@ Redis 借鉴了 Linux 操作系统对于版本号的命名规则 :
 
 更多细节 :  [Redis 命令参考](http://redisdoc.com/index.html)
 
-所以命令大小写并不敏感, 但是大写是约定, 类似于 Mysql.
+所有命令大小写并不敏感, 但是大写是约定, 类似于 Mysql.
 
 ## 配置
 Redis 的配置文件位于 Redis 安装目录下, 文件名为 `redis.conf`.
