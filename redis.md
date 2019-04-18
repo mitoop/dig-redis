@@ -100,7 +100,7 @@ appendfilename "appendonly.aof" // 默认文件名 在 dir 目录下
 appendfsync always // 如其名 always 每个修改命令都会调用 fsync 刷新 AOF 文件 慢, 最安全
 appendfsync everysec // 默认项 如其名 每秒钟都调用 fsync 刷新到 AOF 文件 快 相对安全 可能会丢失一秒内的数据
 appendfsync no // redis 不主动 fsync,依靠系统刷新 最快, 最不安全
-原始说明 : 
+配置文件原文 : 
 # The fsync() call tells the Operating System to actually write data on disk
 # instead of waiting for more data in the output buffer. Some OS will really flush
 # data on disk, some other OS will just try to do it ASAP.
