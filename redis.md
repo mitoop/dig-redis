@@ -6,6 +6,7 @@ Redis 借鉴了 Linux 操作系统对于版本号的命名规则 :
 
 更多细节 :  [Redis 命令参考](http://redisdoc.com/index.html)
 
+所以命令大小写并不敏感, 但是大写是约定, 类似于 Mysql.
 
 ## 配置
 Redis 的配置文件位于 Redis 安装目录下, 文件名为 `redis.conf`.
@@ -76,3 +77,50 @@ INFO 命令
 ```
 
 ## 事务
+
+## 持久化
+```
+Redis 持久化有两种机制. RDB 和 AOF, RDB 备份数据库, AOF 备份执行命令, AOF 类似于 binlog, 但是属于文本格式.
+
+RDB 和 AOF 是可以同时使用的.
+> SAVE // 执行一个同步保存操作, 将当前 Redis 实例的所有数据库快照以 RDB 文件形式保存到硬盘. 同步操作, 单线程会造成阻塞. 
+> BGSAVE // 在后台异步保存数据到硬盘, 通过 fork 一个新的子进程. 通过 LASTSAVE 查看是否执行成功. RDB 方式.
+> BGREWRITEAOF // 执行一个 AOF 文件重写, 重写会创建一个当前 AOF 文件的体积优化版本. 这个是优化 AOF 文件的 例如 写了100次加一 优化为一条加100
+> LASTSAVE // 返回最近一次 Redis 成功将数据保存到磁盘上的时间, UNIX时间戳格式.
+
+自动备份, 在 redis.conf 中 : 
+RDB
+> save N M // 在 N 秒内, 至少发生 M 次修改, 则进行备份. 
+> dbfilename dump.rdb // 默认备份文件名
+> dir ./ // RDB 和 AOF 文件都会存储到该目录
+AOF
+appendonly no/yes // 关闭/开启 AOF 默认关闭
+appendfilename "appendonly.aof" // 默认文件名 在 dir 目录下
+// 同步策略 三选一
+appendfsync always // 如其名 always 每个修改命令都会调用 fsync 刷新 AOF 文件 慢, 最安全
+appendfsync everysec // 默认项 如其名 每秒钟都调用 fsync 刷新到 AOF 文件 快 相对安全 可能会丢失一秒内的数据
+appendfsync no // redis 不主动 fsync,依靠系统刷新 最快, 最不安全
+原始说明 : 
+# The fsync() call tells the Operating System to actually write data on disk
+# instead of waiting for more data in the output buffer. Some OS will really flush
+# data on disk, some other OS will just try to do it ASAP.
+#
+# Redis supports three different modes:
+#
+# no: don't fsync, just let the OS flush the data when it wants. Faster.
+# always: fsync after every write to the append only log. Slow, Safest.
+# everysec: fsync only one time every second. Compromise.
+#
+# The default is "everysec", as that's usually the right compromise between
+# speed and data safety. It's up to you to understand if you can relax this to
+# "no" that will let the operating system flush the output buffer when
+# it wants, for better performances (but if you can live with the idea of
+# some data loss consider the default persistence mode that's snapshotting),
+# or on the contrary, use "always" that's very slow but a bit safer than
+# everysec.
+#
+# More details please check the following article:
+# http://antirez.com/post/redis-persistence-demystified.html
+#
+# If unsure, use "everysec".
+```
