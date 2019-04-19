@@ -134,3 +134,24 @@ AOF 文件 和 RDB 文件同时存在, 会优先加载时 AOF 文件, 因为数�
 > 72351:M 19 Apr 2019 00:04:04.244 * DB loaded from disk: 0.000 seconds // 加载持久化文件
 > 72351:M 19 Apr 2019 00:04:04.244 * Ready to accept connections
 ```
+
+## 过期机制
+```
+过期机制 两种方式 : 主动过期 要轮询 消耗性能, 惰性过期 不是真过期 当查询到的时候 再删除
+首先配置最大可使用内存
+maxmemory <bytes>
+当达到最大内存的时候, Redis 触发删除策略. 需要注意如果配置了 slave 需要考虑合适的最大内存, 给 slave 留内存.
+内存策略 :
+maxmemory-policy 配置
+可用配置
+# volatile-lru -> Evict using approximated LRU among the keys with an expire set. // 过期 key 执行 LRU Least Recently Used Frequently 最近最少使用 淘汰最长时间未被使用
+# allkeys-lru -> Evict any key using approximated LRU. // 所有key 执行 LRU 
+# volatile-lfu -> Evict using approximated LFU among the keys with an expire set. // 过期 key 执行 LFU Least Frequently Used 最近最不常用 淘汰一定时期内被访问次数最少
+# allkeys-lfu -> Evict any key using approximated LFU. // 所有key 执行 LFU 
+# volatile-random -> Remove a random key among the ones with an expire set. // 过期 key 随机删除
+# allkeys-random -> Remove a random key, any key. // 随机删除任何 key 
+# volatile-ttl -> Remove the key with the nearest expire time (minor TTL) // 删除马上要过期的key
+# noeviction -> Don't evict anything, just return an error on write operations. // 不删除 新建时报错
+LRU LFU TTL 不精确 所以每次多拿几个key 然后从中再选一个
+maxmemory-samples 5 // 默认取5个key
+```
