@@ -142,7 +142,7 @@ AOF 文件 和 RDB 文件同时存在, 会优先加载时 AOF 文件, 因为数�
 maxmemory <bytes>
 当达到最大内存的时候, Redis 触发删除策略. 需要注意如果配置了 slave 需要考虑合适的最大内存, 给 slave 留内存.
 内存策略 :
-maxmemory-policy 配置
+maxmemory-policy noeviction
 可用配置
 # volatile-lru -> Evict using approximated LRU among the keys with an expire set. // 过期 key 执行 LRU Least Recently Used Frequently 最近最少使用 淘汰最长时间未被使用
 # allkeys-lru -> Evict any key using approximated LRU. // 所有key 执行 LRU 
@@ -151,7 +151,8 @@ maxmemory-policy 配置
 # volatile-random -> Remove a random key among the ones with an expire set. // 过期 key 随机删除
 # allkeys-random -> Remove a random key, any key. // 随机删除任何 key 
 # volatile-ttl -> Remove the key with the nearest expire time (minor TTL) // 删除马上要过期的key
-# noeviction -> Don't evict anything, just return an error on write operations. // 不删除 新建时报错
+# noeviction -> Don't evict anything, just return an error on write operations. // 不删除 新建时报错 默认值
 LRU LFU TTL 不精确 所以每次多拿几个key 然后从中再选一个
 maxmemory-samples 5 // 默认取5个key
+低版本内存策略和5.0.4不太一样
 ```
