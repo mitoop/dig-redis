@@ -168,3 +168,5 @@ LRU LFU TTL 不精确 所以每次多拿几个key 然后从中再选一个
 maxmemory-samples 5 // 默认取5个key
 低版本 Redis 内存淘汰策略和 5.0.4 不太一样
 ```
+
+## 主从复制
