@@ -137,10 +137,15 @@ AOF 文件 和 RDB 文件同时存在, 会优先加载时 AOF 文件, 因为数�
 
 ## 过期策略和内存淘汰策略
 ```
-!!! 过期策略和内存淘汰策略并不一样
-
 过期策略 : 当 key 过期了, Redis 如何处理 
-过期策略机制 : 定时过期, 惰性过期, 定期过期
+过期策略机制 : 被动方式 和 主动方式
+Redis keys are expired in two ways: a passive way, and an active way.
+A key is passively expired simply when some client tries to access it, and the key is found to be timed out.
+Of course this is not enough as there are expired keys that will never be accessed again. These keys should be expired anyway, so periodically Redis tests a few keys at random among keys with an expire set. All the keys that are already expired are deleted from the keyspace.
+Specifically this is what Redis does 10 times per second:
+Test 20 random keys from the set of keys with an associated expire.
+Delete all the keys found expired.
+If more than 25% of keys were expired, start again from step 1.
 
 淘汰策略 : Redis 内存不足时, 怎么处理新写入的数据.
 
