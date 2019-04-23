@@ -30,9 +30,7 @@ CONFIG RESETSTAT // 重置 INFO 命令中的某些统计数据
 ```
 
 ## 客户端连接
-
 连接命令
-
 ```
 // 直接连接
 > redis-cli -h 127.0.0.1 -p 6379 -a passwod // 直接登录 应该限制 redis 对外访问 密码也应该复杂 性能太高 尝试频率能达到很高
@@ -48,9 +46,7 @@ CONFIG RESETSTAT // 重置 INFO 命令中的某些统计数据
 ```
 
 ## 服务器命令
-
 INFO 命令
-
 ```
 > INFO // 会显示服务器统计信息 很实用的一个命令
 > MONITOR // 实时打印服务器接收的命令 调试用 例如 : 调试 Larave 队列
@@ -65,7 +61,6 @@ INFO 命令
 ```
 
 ## 自动过期
-
 ```
 > EXPIRE key seconds // 给给定 key 设置生存时间, 当 key 过期时, 它会自动删除. 单位为秒
 > EXPIREAT key timestamp // 给给定 key 设置生存时间 时间是 UNIX 时间戳 EXPIRE + AT
@@ -179,4 +174,15 @@ SLAVEOF 命令
 将当前服务器转变为指定服务器的从属服务器
 > SALVEOF host port
 > SALVEOF NO ONE 关闭复制功能, 转变回主服务器, 原来同步数据集不会被丢弃.
+```
+
+## 集合
+```
+> SADD key member [member...]
+> SMEMBERS key
+> SREM key member [member...]
+> SCARD key
+> SINTER key [key...]
+> SUNION key [key...]
+> SDIFF key [key...]
 ```
