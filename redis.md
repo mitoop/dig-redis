@@ -176,6 +176,12 @@ SLAVEOF 命令
 > SALVEOF NO ONE 关闭复制功能, 转变回主服务器, 原来同步数据集不会被丢弃.
 ```
 
+## 字符串
+
+## 哈希
+
+## 列表
+
 ## 集合
 ```
 > SADD key member [member...] // 集合添加元素
@@ -186,3 +192,5 @@ SLAVEOF 命令
 > SUNION key [key...] // 求集合的并集
 > SDIFF key [key...] // 求集合的差集
 ```
+
+## 有序集合
