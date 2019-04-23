@@ -170,3 +170,13 @@ maxmemory-samples 5 // 默认取5个key
 ```
 
 ## 主从复制
+```
+ROLE 命令
+返回实例在复制中担任的角色, 这个角色可以使 `master`, `slave`, 或者 `sentinel`. 除了角色之外, 命令还会返回与角色相关的其他信息.
+> ROLE
+
+SLAVEOF 命令 
+将当前服务器转变为指定服务器的从属服务器
+> SALVEOF host port
+> SALVEOF NO ONE 关闭复制功能, 转变回主服务器, 原来同步数据集不会被丢弃.
+```
