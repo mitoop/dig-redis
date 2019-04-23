@@ -178,11 +178,11 @@ SLAVEOF 命令
 
 ## 集合
 ```
-> SADD key member [member...]
-> SMEMBERS key
-> SREM key member [member...]
-> SCARD key
-> SINTER key [key...]
-> SUNION key [key...]
-> SDIFF key [key...]
+> SADD key member [member...] // 集合添加元素
+> SMEMBERS key // 查看集合元素
+> SREM key member [member...] // 删除结合元素
+> SCARD key // 查看集合基数
+> SINTER key [key...] // 求集合的交集
+> SUNION key [key...] // 求集合的并集
+> SDIFF key [key...] // 求集合的差集
 ```
