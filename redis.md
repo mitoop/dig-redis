@@ -185,8 +185,12 @@ SLAVEOF 命令
 ## 集合
 ```
 > SADD key member [member...] // 集合添加元素
-> SMEMBERS key // 查看集合元素
-> SREM key member [member...] // 删除结合元素
+> SMEMBERS key // 查看集合元素 元素过多时候小心使用
+> SISMEMBERS key member // 判断 member 是否是 key 的成员
+> SPOP key // 移除并返回集合中的一个随机元素
+> SRANDMEMBER key [count] // 随机返回集合中的一个(几个)元素
+> SREM key member [member...] // 删除集合元素
+> SMOVE source destination member // 将元素从 source 集合移动到 destination 集合
 > SCARD key // 查看集合基数
 > SINTER key [key...] // 求集合的交集
 > SUNION key [key...] // 求集合的并集
