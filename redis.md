@@ -177,7 +177,14 @@ SLAVEOF 命令
 ```
 
 ## 字符串
-
+```
+> SET key value [EX seconds] [PX milliseconds] [NX|XX] // 将字符串值 value 关联到 key NX not exist XX exist
+> SETNX key value // 只有键 key 不存在的情况下 将 key 的值设置为 value
+> SETEX key seconds value // 将键 key 的值设置为 value 并将键 key 的生存时间设置为 seconds 秒
+> PSETEX key milliseconds value // 和 SETEX 类似 时间单位为 毫秒
+> GET key // 返回 key 对应的元素
+> GETSET key value // 将 key 的值设为 value 并返回键 key 在被设置前的旧值
+```
 ## 哈希
 
 ## 列表
