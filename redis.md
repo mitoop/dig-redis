@@ -38,7 +38,6 @@ CONFIG RESETSTAT // 重置 INFO 命令中的某些统计数据
 > redis-cli -h 127.0.0.1 -p 6379
 > AUTH password // 登录
 > PING // 验证是否连接上服务器 服务器连接成功会回复 pong
-> SELECT dbindex // 选择数据库 默认16个数据库 0-15 默认进入 0 这些都可以通过 CONFIG 配置
 > QUIT // 关闭当前客户端
 > CLIENT GETNAME // 获取连接名称 默认没有名称 通过 CLIENT SETNAME 设置
 > CLIENT SETNAME name // 设置连接名称 可通过 CLIENT GETNAME 或者 CLIENT LIST 看到
@@ -53,11 +52,25 @@ INFO 命令
 > COMMAND // 获取命令详情数组
 > COMMAND COUNT // 获取命令总数
 > TIME // 返回当前服务器时间
-> DBSIZE // 返回当前数据库的 key 的数量
-> FLUSHDB // 删除当前数据库的所有 key 谨慎使用
-> FLUSHALL // 删除所有数据库的所有的 key 更谨慎使用
 > CLIENT LIST // 获取连接到服务器的客户端连接列表
 > CLIENT KILL 127.0.0.1:43501 // 客户端的ip和端口号 根据 CLIENT LIST 获得
+```
+
+## 数据库
+```
+> EXISTS key // 检查给定 key 是否存在
+> TYPE key // 返回 key 所存储的值的类型
+> RENAME key newkey // 将 key 改名为 newkey
+> RENAMENX key newkey // 当且仅当 newkey 不存在时 将 key 改名为 newkey
+> MOVE key db // 将当前数据库的 key 移动到给定的数据库 db 当中
+> DEL key [key...] // 删除给定 key(s)
+> RANDOMKEY // 如其名 从当前数据库随机返回一个 key 
+> DBSIZE // 返回当前数据库的 key 的数量
+> KEYS pattern // 查找 key 按照 pattern(支持 * ? []等) 格式 线上 慎用 KEYS * 
+> FLUSHDB // 删除当前数据库的所有 key 谨慎使用
+> FLUSHALL // 删除所有数据库的所有的 key 更谨慎使用
+> SELECT dbindex // 选择数据库 默认16个数据库 0-15 默认进入 0 这些都可以通过 CONFIG 配置
+> SWAPDB db1 db2 // 对换两个数据的数据
 ```
 
 ## 自动过期
@@ -72,6 +85,8 @@ INFO 命令
 ```
 
 ## 事务
+```
+```
 
 ## 持久化
 ```
@@ -190,8 +205,12 @@ SLAVEOF 命令
 > GETSET key value // 将 key 的值设为 value 并返回键 key 在被设置前的旧值
 ```
 ## 哈希
+```
+```
 
 ## 列表
+```
+```
 
 ## 集合
 ```
@@ -209,3 +228,5 @@ SLAVEOF 命令
 ```
 
 ## 有序集合
+```
+```
