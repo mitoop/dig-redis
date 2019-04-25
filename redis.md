@@ -176,6 +176,10 @@ SLAVEOF 命令
 > SALVEOF NO ONE 关闭复制功能, 转变回主服务器, 原来同步数据集不会被丢弃.
 ```
 
+## Lua 脚本
+```
+```
+
 ## 字符串
 ```
 > SET key value [EX seconds] [PX milliseconds] [NX|XX] // 将字符串值 value 关联到 key NX not exist XX exist
