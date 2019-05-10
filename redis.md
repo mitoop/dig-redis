@@ -91,12 +91,16 @@ Redis 中的事务是一组命令的集合. 一个事务中的命令要么都执
 Redis 的事务还能保证一个事务内的命令依次执行而不被其他命令插入(单进程,单线程).
 
 Redis 事务不像 Mysql 事务, Redis 事务不会自动回滚
+> MULTI
+> ... 
 > 127.0.0.1:6379> exec
 > 1) OK
 > 2) (error) WRONGTYPE Operation against a key holding the wrong kind of value // 发生错误 并不会整体回滚
 > 3) OK
-Redis 事务不能嵌套, 嵌套会触发错误 
-> (error) ERR MULTI calls can not be nested 错误.
+Redis 事务不能嵌套, 嵌套会触发错误
+> MULTI
+> MULTI 
+> (error) ERR MULTI calls can not be nested
 ```
 
 ## 持久化
